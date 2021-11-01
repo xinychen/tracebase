@@ -3,9 +3,10 @@ Insufficient sampling and imputation treatment to traffic network states from mo
 
 <br>
 
-## Data
+## Open Source
 
-[Uber movement speed data of New York City](https://movement.uber.com/explore/new_york/speeds)
+- Data: [Uber movement speed data of New York City](https://movement.uber.com/explore/new_york/speeds)
+- [Analyzing 1.1 billion NYC taxi and Uber trips, with a vengeance](https://toddwschneider.com/posts/analyzing-1-1-billion-nyc-taxi-and-uber-trips-with-a-vengeance/)
 
 <br>
 
