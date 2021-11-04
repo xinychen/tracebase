@@ -69,6 +69,31 @@ The matrix's row corresponds to one specific road/street, while the column corre
 
 <br>
 
+## Data Analysis
+
+### Analyze missing rates
+
+```python
+## Build a speed matrix for the whole year of 2019 in NYC
+mat = np.load('hourly_speed_mat_2019_1.npy')
+for month in range(2, 13):
+    mat = np.append(mat, np.load('hourly_speed_mat_2019_{}.npy'.format(month)), axis = 1)
+
+## Calculate missing rates
+print('The missing ratte of speed matrix is:')
+print(len(np.where(mat == 0)[0]) / (mat.shape[0] * mat.shape[1]))
+
+N, T = mat.shape
+sample_rate = np.zeros(T)
+for t in range(T):
+    pos = np.where(mat[:, t] == 0)
+    sample_rate[t] = len(pos[0]) / N
+sample_rate = sample_rate[: 52 * 7 * 24].reshape([52, 24 * 7])
+sample_rate = np.mean(sample_rate, axis = 0)
+```
+
+<br>
+
 ## References
 
 - A. M. Avila, I. Mezić (2020). [Data-driven analysis and forecasting of highway traffic dynamics](https://www.nature.com/articles/s41467-020-15582-5). Nature Communications, 11: 2090.
