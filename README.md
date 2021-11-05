@@ -89,7 +89,40 @@ for t in range(T):
     pos = np.where(mat[:, t] == 0)
     sample_rate[t] = len(pos[0]) / N
 sample_rate = sample_rate[: 52 * 7 * 24].reshape([52, 24 * 7])
-sample_rate = np.mean(sample_rate, axis = 0)
+whole_rate = np.mean(sample_rate, axis = 0)
+```
+
+### Draw Missing Rates
+
+```python
+rate = len(np.where(mat == 0)[0]) / (mat.shape[0] * mat.shape[1])
+print(rate)
+```
+
+```python
+import matplotlib.pyplot as plt
+
+plt.rcParams['font.size'] = 12
+fig = plt.figure(figsize = (8, 2))
+ax = fig.add_subplot(1, 1, 1)
+plt.plot(whole_rate, color = 'red', linewidth = 1.8)
+upper = whole_rate + np.std(sample_rate, axis = 0)
+lower = whole_rate - np.std(sample_rate, axis = 0)
+x_bound = np.append(np.append(np.append(np.array([0, 0]), np.arange(0, 7 * 24)), 
+                              np.array([7 * 24 - 1, 7 * 24 - 1])), np.arange(7 * 24 - 1, -1, -1))
+y_bound = np.append(np.append(np.append(np.array([upper[0], lower[0]]), lower), 
+                              np.array([lower[-1], upper[-1]])), np.flip(upper))
+plt.fill(x_bound, y_bound, color = 'red', alpha = 0.2)
+plt.axhline(y = rate, color = 'gray', alpha = 0.5, linestyle='dashed')
+plt.xticks(np.arange(0, 24 * 7 + 1, 1 * 24))
+plt.xlabel('Time (hour)')
+plt.ylabel('Missing rate')
+plt.grid(axis = 'both', linestyle='dashed', linewidth = 0.1, color = 'gray')
+ax.tick_params(direction = "in")
+ax.set_xlim([-1, 7 * 24])
+# ax.set_ylim([0.6, 1])
+plt.show()
+# fig.savefig("Seattle_missing_rate_stat.pdf", bbox_inches = "tight")
 ```
 
 <br>
@@ -102,3 +135,4 @@ sample_rate = np.mean(sample_rate, axis = 0)
 - Hao Zhang, Clarence W. Rowley, Eric A. Deem, Louis N. Cattafesta (2019). [Online Dynamic Mode Decomposition for Time-Varying Systems](http://cwrowley.princeton.edu/papers/Zhang-2019a.pdf). SIAM J. Applied Dynamical Systems, 18(3):  1586–1609.
 - Christopher M. Bishop (1994). [Mixture Density Networks](https://publications.aston.ac.uk/id/eprint/373/1/NCRG_94_004.pdf).
 - Wen-Ting Wang, Hsin-Cheng Huang (2017). [Regularized Principal Component Analysis for Spatial Data](https://doi.org/10.1080/10618600.2016.1157483). Journal of Computational and Graphical Statistics, 26(1): 14-25.
+- Huiling Qin, Xianyuan Zhan, Yuanxun Li, Xiaodu Yang, Yu Zheng (2021).[Network-Wide Traffic States Imputation Using Self-interested Coalitional Learning](http://urban-computing.com/pdf/Network-Wide%20Traffic%20States%20Imputation%20Using%20Self-interested%20Coalitional%20Learning.pdf). KDD 2021.
