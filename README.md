@@ -125,6 +125,38 @@ plt.show()
 # fig.savefig("Seattle_missing_rate_stat.pdf", bbox_inches = "tight")
 ```
 
+### Analyze Mean and Standard Deviation in Data
+
+```python
+import numpy as np
+import pandas as pd
+import seaborn as sns
+import matplotlib.pyplot as plt
+
+data = pd.read_csv('movement-speeds-hourly-seattle-2019-1.csv'.format(month))
+
+fig = plt.figure(figsize = (8, 3))
+plt.rcParams['font.size'] = 12
+
+ax = fig.add_subplot(1, 2, 1)
+sns.distplot(data.speed_mph_mean.values, kde_kws = dict(linewidth = 2.5), color = '#069AF3')
+ax.tick_params(direction = "in")
+ax.set_xlim([0, 80])
+plt.xlabel('Speed (mph)')
+plt.ylabel('Probability')
+
+ax = fig.add_subplot(1, 2, 2)
+sns.distplot(data.speed_mph_stddev.values, kde_kws = dict(linewidth = 2.5), color = '#069AF3')
+ax.tick_params(direction = "in")
+ax.set_xlim([0, 41])
+plt.xlabel('Speed (mph)')
+plt.ylabel('Probability')
+fig.tight_layout()
+
+plt.show()
+# fig.savefig("Seattle_Jan_mean_std_speed_dist.pdf", bbox_inches = "tight")
+```
+
 <br>
 
 ## References
