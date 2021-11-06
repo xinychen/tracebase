@@ -169,3 +169,4 @@ plt.show()
 - Wen-Ting Wang, Hsin-Cheng Huang (2017). [Regularized Principal Component Analysis for Spatial Data](https://doi.org/10.1080/10618600.2016.1157483). Journal of Computational and Graphical Statistics, 26(1): 14-25.
 - Huiling Qin, Xianyuan Zhan, Yuanxun Li, Xiaodu Yang, Yu Zheng (2021).[Network-Wide Traffic States Imputation Using Self-interested Coalitional Learning](http://urban-computing.com/pdf/Network-Wide%20Traffic%20States%20Imputation%20Using%20Self-interested%20Coalitional%20Learning.pdf). KDD 2021.
 - Serdar Çolak, Antonio Lima, Marta C. González (2016). [Understanding congested travel in urban areas](https://www.nature.com/articles/ncomms10793). Nature Communications, 7: 10793.
+- Zhaokai Li, Zihua Chai, Yuhang Guo, et al. (2021). [Resonant quantum principal component analysis](https://www.science.org/doi/10.1126/sciadv.abg2589). Science Advances.
