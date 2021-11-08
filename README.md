@@ -159,6 +159,12 @@ plt.show()
 
 <br>
 
+## Important Concepts
+
+- Mixed matrix completion: Learning mixtures of low-rank models on incomplete data.
+
+<br>
+
 ## References
 
 - A. M. Avila, I. Mezić (2020). [Data-driven analysis and forecasting of highway traffic dynamics](https://www.nature.com/articles/s41467-020-15582-5). Nature Communications, 11: 2090.
