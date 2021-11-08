@@ -178,4 +178,6 @@ plt.show()
 - Zhaokai Li, Zihua Chai, Yuhang Guo, et al. (2021). [Resonant quantum principal component analysis](https://www.science.org/doi/10.1126/sciadv.abg2589). Science Advances.
 - Yuxin Chen, Jianqing Fan, Cong Ma, and Yuling Yan (2019). [Inference and uncertainty quantification for noisy matrix completion](https://www.pnas.org/content/pnas/116/46/22931.full.pdf). PNAS, 116(46): 22931–22937.
 - Yanxi Chen, Cong Ma, H. Vincent Poor, Yuxin Chen (2021). [Learning Mixtures of Low-Rank Models](https://yuxinchen2020.github.io/publications/mixed-matrix-sensing.pdf). IEEE Transactions on Information Theory, 67(7): 4613-4636.
-- 
+- Arun Tejasvi Chaganty, Percy Liang (2013). [Spectral experts for estimating mixtures of linear regressions](https://arxiv.org/pdf/1306.3729.pdf)
+- Sitan Chen, Jerry Li, Zhao Song (2019). [Learning mixtures of linear regressions in subexponential time via fourier moments](https://arxiv.org/pdf/1912.07629.pdf)
+- Daniel L. Pimentel-Alarcón (2018). [Mixture Matrix Completion](https://arxiv.org/pdf/1808.00616.pdf).
