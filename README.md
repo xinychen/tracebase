@@ -171,3 +171,5 @@ plt.show()
 - Serdar Çolak, Antonio Lima, Marta C. González (2016). [Understanding congested travel in urban areas](https://www.nature.com/articles/ncomms10793). Nature Communications, 7: 10793.
 - Zhaokai Li, Zihua Chai, Yuhang Guo, et al. (2021). [Resonant quantum principal component analysis](https://www.science.org/doi/10.1126/sciadv.abg2589). Science Advances.
 - Yuxin Chen, Jianqing Fan, Cong Ma, and Yuling Yan (2019). [Inference and uncertainty quantification for noisy matrix completion](https://www.pnas.org/content/pnas/116/46/22931.full.pdf). PNAS, 116(46): 22931–22937.
+- Yanxi Chen, Cong Ma, H. Vincent Poor, Yuxin Chen (2021). [Learning Mixtures of Low-Rank Models](https://yuxinchen2020.github.io/publications/mixed-matrix-sensing.pdf). IEEE Transactions on Information Theory, 67(7): 4613-4636.
+- 
