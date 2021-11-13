@@ -71,7 +71,7 @@ The matrix's row corresponds to one specific road/street, while the column corre
 
 ## Data Analysis
 
-### Analyze missing rates
+### Analyze Missing Rates
 
 ```python
 ## Build a speed matrix for the whole year of 2019 in NYC
@@ -123,6 +123,25 @@ ax.set_xlim([-1, 7 * 24])
 # ax.set_ylim([0.6, 1])
 plt.show()
 # fig.savefig("Seattle_missing_rate_stat.pdf", bbox_inches = "tight")
+```
+
+### Analyze Observation Rate of Road Segments
+
+```python
+import numpy as np
+
+mat = np.load('hourly_speed_mat_2019_1.npy')
+for month in range(2, 13):
+    mat = np.append(mat, np.load('hourly_speed_mat_2019_{}.npy'.format(month)), axis = 1)
+ratio = np.sum(mat > 0, axis = 1) / (365 * 24)
+```
+
+Print observation rate results:
+
+```python
+threshold = 0.1
+print(np.sum(ratio > threshold))
+print(np.sum(ratio > threshold) / ratio.shape[0])
 ```
 
 ### Analyze Mean and Standard Deviation in Data
