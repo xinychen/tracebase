@@ -139,9 +139,11 @@ ratio = np.sum(mat > 0, axis = 1) / (365 * 24)
 Print observation rate results:
 
 ```python
-threshold = 0.1
-print(np.sum(ratio > threshold))
-print(np.sum(ratio > threshold) / ratio.shape[0])
+for threshold in 0.1 * np.arange(1, 10):
+    print('Observation rate > {0:.2f}'.format(threshold))
+    print(np.sum(ratio > threshold))
+    print(np.sum(ratio > threshold) / ratio.shape[0])
+    print()
 ```
 
 ### Analyze Mean and Standard Deviation in Data
