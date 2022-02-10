@@ -207,5 +207,9 @@ plt.show()
 
 ## Supported by
 
-- IVADO
-- FRQNT
+<a href="https://ivado.ca/en">
+<img align="middle" src="graphics/ivado_logo.jpeg" alt="drawing" height="70" hspace="50">
+</a>
+<a href="https://www.cirrelt.ca/">
+<img align="middle" src="graphics/cirrelt_logo.png" alt="drawing" height="50">
+</a>
