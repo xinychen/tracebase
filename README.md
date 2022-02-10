@@ -14,7 +14,7 @@
 
 ### Download Movement Speed Data
 
-1. Open the download page of [Uber movement project](https://movement.uber.com/). Take an example like New York, please try [https://movement.uber.com/explore/new_york/speeds](https://movement.uber.com/explore/new_york/speeds).
+1. Open the download page of Uber movement project. Take an example like New York, please try [NYC Uber movement speed data](https://movement.uber.com/explore/new_york/speeds).
 2. Set the product as `speeds` and one specific time period.
 3. Download data and save it on your computer.
 
@@ -58,7 +58,7 @@ for i in range(road.shape[0]):
     if (k % 1000) == 0:
         print(k)
 mat = tensor.reshape([road.shape[0], max(data.day.values) * 24])
-np.save('hourly_speed_mat_2019_{}.npy'.format(month), mat)
+np.savez('hourly_speed_mat_2019_{}.npz'.format(month), mat)
 
 del data, tensor
 ```
@@ -73,9 +73,9 @@ The matrix's row corresponds to one specific road/street, while the column corre
 
 ```python
 ## Build a speed matrix for the whole year of 2019 in NYC
-mat = np.load('hourly_speed_mat_2019_1.npy')
+mat = np.load('hourly_speed_mat_2019_1.npz')['arr_0']
 for month in range(2, 13):
-    mat = np.append(mat, np.load('hourly_speed_mat_2019_{}.npy'.format(month)), axis = 1)
+    mat = np.append(mat, np.load('hourly_speed_mat_2019_{}.npz'.format(month))['arr_0'], axis = 1)
 
 ## Calculate missing rates
 print('The missing ratte of speed matrix is:')
@@ -128,9 +128,9 @@ plt.show()
 ```python
 import numpy as np
 
-mat = np.load('hourly_speed_mat_2019_1.npy')
+mat = np.load('hourly_speed_mat_2019_1.npz')['arr_0']
 for month in range(2, 13):
-    mat = np.append(mat, np.load('hourly_speed_mat_2019_{}.npy'.format(month)), axis = 1)
+    mat = np.append(mat, np.load('hourly_speed_mat_2019_{}.npz'.format(month))['arr_0'], axis = 1)
 ratio = np.sum(mat > 0, axis = 1) / (365 * 24)
 ```
 
@@ -178,9 +178,9 @@ plt.show()
 
 <br>
 
-## Important Concepts
+## Documentation
 
-- Mixed matrix completion: Learning mixtures of low-rank models on incomplete data.
+
 
 <br>
 
@@ -204,3 +204,8 @@ plt.show()
 - Sitan Chen, Jerry Li, Zhao Song (2019). [Learning mixtures of linear regressions in subexponential time via fourier moments](https://arxiv.org/pdf/1912.07629.pdf). arXiv:1912.07629.
 - Daniel L. Pimentel-Alarcón (2018). [Mixture Matrix Completion](https://arxiv.org/pdf/1808.00616.pdf). arXiv:1808.00616.
 - Alexey Ozerov, Cédric Fevotte (2010). [Multichannel Nonnegative Matrix Factorization in Convolutive Mixtures for Audio Source Separation](researchgate.net/profile/Cedric-Fevotte/publication/224586165_Multichannel_Nonnegative_Matrix_Factorization_in_Convolutive_Mixtures_for_Audio_Source_Separation/links/54609a7a0cf295b561624095/Multichannel-Nonnegative-Matrix-Factorization-in-Convolutive-Mixtures-for-Audio-Source-Separation.pdf).  IEEE Transactions on Audio, Speech, and Language Processing, 18(3): 550 - 563.
+
+## Supported by
+
+- IVADO
+- FRQNT
