@@ -20,10 +20,10 @@
 
 <p align="center">
 <a href="https://movement.uber.com/explore/new_york/speeds">
-<img align="middle" src="graphics/nyc_movement_heatmap.png" alt="drawing" height="270" hspace="50">
+<img align="middle" src="graphics/nyc_movement_heatmap.png" alt="drawing" height="270" hspace="20">
 </a>
 <a href="https://movement.uber.com/explore/seattle/speeds">
-<img align="middle" src="graphics/seattle_movement_heatmap.png" alt="drawing" height="270" hspace="50">
+<img align="middle" src="graphics/seattle_movement_heatmap.png" alt="drawing" height="270" hspace="20">
 </a>
 </p>
 
