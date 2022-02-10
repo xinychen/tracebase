@@ -6,16 +6,7 @@
 
 <h6 align="center">Made by Xinyu Chen • :globe_with_meridians: <a href="https://xinychen.github.io">https://xinychen.github.io</a></h6>
 
-[Uber movement project](https://movement.uber.com/) provides data and tools for cities to more deeply understand and address urban transportation challenges. [Uber movement speed data](https://movement.uber.com/explore/london/speeds) measure hourly street speeds across a city (e.g., New York City, Seattle, and London) to enable data-driven city planning. These data are indeed multivariate time series with N road segments and T time steps (hourly), and are characterized by high-dimensionality, sparsity, and nonstationarity. To address these challenges, we propose a temporal matrix factorization for multivariate time series forecasting on high-dimensional and sparse Uber movement speed data.
-
-<br>
-
-## Open Source
-
-- Uber Movement: [Uber movement speed data of New York City](https://movement.uber.com/explore/new_york/speeds)
-- Todd W. Schneider (2015). [Analyzing 1.1 billion NYC taxi and Uber trips, with a vengeance](https://toddwschneider.com/posts/analyzing-1-1-billion-nyc-taxi-and-uber-trips-with-a-vengeance/). [[GitHub](https://github.com/toddwschneider)]
-- [OSMnx: Python for street networks. Retrieve, model, analyze, and visualize street networks and other spatial data from OpenStreetMap.](https://github.com/gboeing/osmnx)
-- Geoff Boeing (2016). [OSMnx: Python for Street Networks](https://geoffboeing.com/2016/11/osmnx-python-street-networks/). Blog post.
+[Uber movement project](https://movement.uber.com/) provides data and tools for cities to more deeply understand and address urban transportation challenges. Uber movement speed data measure hourly street speeds across a city (e.g., [New York City](https://movement.uber.com/explore/new_york/speeds), [Seattle](https://movement.uber.com/explore/seattle/speeds), and [London](https://movement.uber.com/explore/london/speeds)) to enable data-driven city planning. These data are indeed multivariate time series with N road segments and T time steps (hours), and are characterized by high-dimensionality, sparsity, and nonstationarity. To address these challenges, we propose a temporal matrix factorization for multivariate time series forecasting on high-dimensional and sparse Uber movement speed data.
 
 <br>
 
@@ -195,6 +186,9 @@ plt.show()
 
 ## References
 
+- Todd W. Schneider (2015). [Analyzing 1.1 billion NYC taxi and Uber trips, with a vengeance](https://toddwschneider.com/posts/analyzing-1-1-billion-nyc-taxi-and-uber-trips-with-a-vengeance/). [[GitHub](https://github.com/toddwschneider)]
+- [OSMnx: Python for street networks. Retrieve, model, analyze, and visualize street networks and other spatial data from OpenStreetMap.](https://github.com/gboeing/osmnx)
+- Geoff Boeing (2016). [OSMnx: Python for Street Networks](https://geoffboeing.com/2016/11/osmnx-python-street-networks/). Blog post.
 - A. M. Avila, I. Mezić (2020). [Data-driven analysis and forecasting of highway traffic dynamics](https://www.nature.com/articles/s41467-020-15582-5). Nature Communications, 11: 2090.
 - Reese Pathak, Rajat Sen, Nikhil Rao, N. Benjamin Erichson, Michael I. Jordan, Inderjit S. Dhillon (2021). [Cluster-and-Conquer: A Framework for Time-Series Forecasting](https://arxiv.org/pdf/2110.14011.pdf). arXiv:2110.14011.
 - Oliver Borchers (2019). [A Hitchhiker’s Guide to Mixture Density Networks](https://towardsdatascience.com/a-hitchhikers-guide-to-mixture-density-networks-76b435826cca). Blog post.
