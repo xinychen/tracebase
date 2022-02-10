@@ -20,14 +20,14 @@
 
 <p align="center">
 <a href="https://movement.uber.com/explore/new_york/speeds">
-<img align="middle" src="graphics/nyc_movement_heatmap.png" alt="drawing" height="270" hspace="50"/>
+<img align="middle" src="graphics/nyc_movement_heatmap.png" alt="drawing" height="270" hspace="50">
 </a>
 <a href="https://movement.uber.com/explore/seattle/speeds">
-<img align="middle" src="graphics/seattle_movement_heatmap.png" alt="drawing" height="270">
+<img align="middle" src="graphics/seattle_movement_heatmap.png" alt="drawing" height="270" hspace="50">
 </a>
 </p>
 
-<p align="center"><b>Figure 1</b> Uber movement speed heatmap of New York City (left panel) and Seattle (right panel), USA.</p>
+<p align="center"><b>Figure 1</b>: Uber movement speed heatmap of New York City (left panel) and Seattle (right panel), USA.</p>
 
 ### Extract Roads/Streets
 
@@ -133,6 +133,13 @@ ax.set_xlim([-1, 7 * 24])
 plt.show()
 # fig.savefig("NYC_missing_rate_stat.pdf", bbox_inches = "tight")
 ```
+
+<p align="center">
+<img align="middle" src="graphics/NYC_missing_rate_stat.png" alt="drawing" height="120">
+<img align="middle" src="graphics/Seattle_missing_rate_stat.png" alt="drawing" height="120">
+</p>
+
+<p align="center"><b>Figure 2</b>: The missing rates of Uber movement speed data aggregated per week over the whole year of 2019. The red curve shows the aggregated missing rates in all 52 weeks. The red area shows the standard deviation of missing rates in each hour over 52 weeks. The 168 time steps refer to 168 hours of Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday, and Monday. (Left panel) The dataset has 98,210 road segments, and the <b>whole missing rate is 64.43%</b>. (Right panel) The dataset has 63,490 road segments, and the <b>whole missing rate is 84.95%</b>.</p>
 
 ### Analyze Observation Rate of Road Segments
 
