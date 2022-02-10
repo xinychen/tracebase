@@ -18,6 +18,17 @@
 2. Set the product as `speeds` and one specific time period.
 3. Download data and save it on your computer.
 
+<p align="center">
+<a href="https://movement.uber.com/explore/new_york/speeds">
+<img align="middle" src="graphics/nyc_movement_heatmap.png" alt="drawing" height="270" hspace="50"/>
+</a>
+<a href="https://movement.uber.com/explore/seattle/speeds">
+<img align="middle" src="graphics/seattle_movement_heatmap.png" alt="drawing" height="270">
+</a>
+</p>
+
+<p align="center"><b>Figure 1</b> Uber movement speed heatmap of New York City (left panel) and Seattle (right panel), USA.</p>
+
 ### Extract Roads/Streets
 
 Please download `movement-speeds-hourly-new-york-2019-1.csv` (movement speed data file of New York City in January 2019).
@@ -120,7 +131,7 @@ ax.tick_params(direction = "in")
 ax.set_xlim([-1, 7 * 24])
 # ax.set_ylim([0.6, 1])
 plt.show()
-# fig.savefig("Seattle_missing_rate_stat.pdf", bbox_inches = "tight")
+# fig.savefig("NYC_missing_rate_stat.pdf", bbox_inches = "tight")
 ```
 
 ### Analyze Observation Rate of Road Segments
@@ -142,38 +153,6 @@ for threshold in 0.1 * np.arange(1, 10):
     print(np.sum(ratio > threshold))
     print(np.sum(ratio > threshold) / ratio.shape[0])
     print()
-```
-
-### Analyze Mean and Standard Deviation in Data
-
-```python
-import numpy as np
-import pandas as pd
-import seaborn as sns
-import matplotlib.pyplot as plt
-
-data = pd.read_csv('movement-speeds-hourly-seattle-2019-1.csv'.format(month))
-
-fig = plt.figure(figsize = (8, 3))
-plt.rcParams['font.size'] = 12
-
-ax = fig.add_subplot(1, 2, 1)
-sns.distplot(data.speed_mph_mean.values, kde_kws = dict(linewidth = 2.5), color = '#069AF3')
-ax.tick_params(direction = "in")
-ax.set_xlim([0, 80])
-plt.xlabel('Speed (mph)')
-plt.ylabel('Probability')
-
-ax = fig.add_subplot(1, 2, 2)
-sns.distplot(data.speed_mph_stddev.values, kde_kws = dict(linewidth = 2.5), color = '#069AF3')
-ax.tick_params(direction = "in")
-ax.set_xlim([0, 41])
-plt.xlabel('Speed (mph)')
-plt.ylabel('Probability')
-fig.tight_layout()
-
-plt.show()
-# fig.savefig("Seattle_Jan_mean_std_speed_dist.pdf", bbox_inches = "tight")
 ```
 
 <br>
