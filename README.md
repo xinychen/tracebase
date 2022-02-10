@@ -1,12 +1,12 @@
 # tracebase
 [![MIT License](https://img.shields.io/badge/license-MIT-green.svg)](https://opensource.org/licenses/MIT)
 ![Python 3.7](https://img.shields.io/badge/Python-3.7-blue.svg)
-[![repo size](https://img.shields.io/github/repo-size/xinychen/transdim.svg)](https://github.com/xinychen/transdim/archive/master.zip)
-[![GitHub stars](https://img.shields.io/github/stars/xinychen/transdim.svg?logo=github&label=Stars&logoColor=white)](https://github.com/xinychen/transdim)
+[![repo size](https://img.shields.io/github/repo-size/xinychen/tracebase.svg)](https://github.com/xinychen/tracebase/archive/master.zip)
+[![GitHub stars](https://img.shields.io/github/stars/xinychen/tracebase.svg?logo=github&label=Stars&logoColor=white)](https://github.com/xinychen/tracebase)
 
 <h6 align="center">Made by Xinyu Chen • :globe_with_meridians: <a href="https://xinychen.github.io">https://xinychen.github.io</a></h6>
 
-[Uber movement project](https://movement.uber.com/) provides data and tools for cities to more deeply understand and address urban transportation challenges. Uber movement speed data measure hourly street speeds across a city (e.g., [New York City](https://movement.uber.com/explore/new_york/speeds), [Seattle](https://movement.uber.com/explore/seattle/speeds), and [London](https://movement.uber.com/explore/london/speeds)) to enable data-driven city planning. These data are indeed multivariate time series with N road segments and T time steps (hours), and are characterized by high-dimensionality, sparsity, and nonstationarity. To address these challenges, we propose a temporal matrix factorization for multivariate time series forecasting on high-dimensional and sparse Uber movement speed data.
+[Uber movement project](https://movement.uber.com/) provides data and tools for cities to more deeply understand and address urban transportation challenges. Uber movement speed data measure hourly street speeds across a city (e.g., [New York City](https://movement.uber.com/explore/new_york/speeds), [Seattle](https://movement.uber.com/explore/seattle/speeds), and [London](https://movement.uber.com/explore/london/speeds)) to enable data-driven city planning. These data are indeed multivariate time series with N road segments and T time steps (hours), and are characterized by high-dimensionality, sparsity, and nonstationarity. To address these challenges, we propose a temporal matrix factorization framework for multivariate time series forecasting on high-dimensional and sparse Uber movement speed data.
 
 <br>
 
