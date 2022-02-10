@@ -18,6 +18,8 @@
 2. Set the product as `speeds` and one specific time period.
 3. Download data and save it on your computer.
 
+<br>
+
 <p align="center">
 <a href="https://movement.uber.com/explore/new_york/speeds">
 <img align="middle" src="graphics/nyc_movement_heatmap.png" alt="drawing" height="270" hspace="20">
@@ -133,6 +135,8 @@ ax.set_xlim([-1, 7 * 24])
 plt.show()
 # fig.savefig("NYC_missing_rate_stat.pdf", bbox_inches = "tight")
 ```
+
+<br>
 
 <p align="center">
 <img align="middle" src="graphics/NYC_missing_rate_stat.png" alt="drawing" height="120">
