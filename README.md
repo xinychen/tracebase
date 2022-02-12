@@ -78,7 +78,7 @@ del data, tensor
 
 The matrix's row corresponds to one specific road/street, while the column corresponds to one specific hour.
 
-In this repository, you can use the processed dataset at the `datasets/NYC-movement-data-set`:
+In this repository, you can use the prepared dataset at the folder `datasets/NYC-movement-data-set`:
 
 - `hourly_speed_mat_2019_1.npz` (**91 MB**): data is of size 98,210 x 744 with 23,228,581 positive speed observations.
 - `hourly_speed_mat_2019_2.npz` (**85.2 MB**): data is of size 98,210 x 672 with 21,912,460 positive speed observations.
@@ -97,6 +97,8 @@ data = data.drop(i)
 <br>
 
 ## Data Analysis
+
+If you want to investigate the missing data problem in Uber movement data, please prepare the data by yourself through the above codes. You can also skip this part and check out our documentation for multivariate time series forecasting on NYC Uber movement speed dataset in the next part.
 
 ### Analyze Missing Rates
 
@@ -186,7 +188,13 @@ for threshold in 0.1 * np.arange(1, 10):
 
 ## Documentation
 
+```python
+import numpy as np
 
+dense_mat = np.load('../datasets/NYC-movement-data-set/hourly_speed_mat_2019_1.npz')['arr_0']
+for month in range(2, 4):
+    dense_mat = np.append(dense_mat, np.load('../datasets/NYC-movement-data-set/hourly_speed_mat_2019_{}.npz'.format(month))['arr_0'], axis = 1)
+```
 
 <br>
 
