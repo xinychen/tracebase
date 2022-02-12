@@ -71,12 +71,28 @@ for i in range(road.shape[0]):
     if (k % 1000) == 0:
         print(k)
 mat = tensor.reshape([road.shape[0], max(data.day.values) * 24])
-np.savez('hourly_speed_mat_2019_{}.npz'.format(month), mat)
+np.savez_compressed('hourly_speed_mat_2019_{}.npz'.format(month), mat)
 
 del data, tensor
 ```
 
 The matrix's row corresponds to one specific road/street, while the column corresponds to one specific hour.
+
+In this repository, you can use the processed dataset at the `datasets/NYC-movement-data-set`:
+
+- `hourly_speed_mat_2019_1.npz` (**91 MB**): data is of size 98,210 x 744 with 23,228,581 positive speed observations.
+- `hourly_speed_mat_2019_2.npz` (**85.2 MB**): data is of size 98,210 x 672 with 21,912,460 positive speed observations.
+- `hourly_speed_mat_2019_3.npz` (**38.1 MB**): data is of size 98,210 x 264 with 10,026,045 positive speed observations.
+
+Note that to make the data as small as possible, we only maintain the data during the first 11 days of March 2019, and save it as `hourly_speed_mat_2019_3.npz`. You can use the following code to drop the unnecessary subset.
+
+```python
+month = 3
+data = pd.read_csv('movement-speeds-hourly-new-york-2019-{}.csv'.format(month))
+road = pd.read_csv('road.csv')
+i = data[(data.day > 11)].index
+data = data.drop(i)
+```
 
 <br>
 
