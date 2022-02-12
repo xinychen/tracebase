@@ -188,6 +188,16 @@ for threshold in 0.1 * np.arange(1, 10):
 
 ## Documentation
 
+### Problem Definition
+
+
+### Framework
+
+
+### Experiments
+
+#### Dataset
+
 ```python
 import numpy as np
 
