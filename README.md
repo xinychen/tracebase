@@ -216,8 +216,8 @@ for month in range(2, 4):
 - Huiling Qin, Xianyuan Zhan, Yuanxun Li, Xiaodu Yang, Yu Zheng (2021).[Network-Wide Traffic States Imputation Using Self-interested Coalitional Learning](http://urban-computing.com/pdf/Network-Wide%20Traffic%20States%20Imputation%20Using%20Self-interested%20Coalitional%20Learning.pdf). KDD 2021.
 - Yuxin Chen, Jianqing Fan, Cong Ma, and Yuling Yan (2019). [Inference and uncertainty quantification for noisy matrix completion](https://www.pnas.org/content/pnas/116/46/22931.full.pdf). PNAS, 116(46): 22931–22937.
 - Yanxi Chen, Cong Ma, H. Vincent Poor, Yuxin Chen (2021). [Learning Mixtures of Low-Rank Models](https://yuxinchen2020.github.io/publications/mixed-matrix-sensing.pdf). IEEE Transactions on Information Theory, 67(7): 4613-4636.
-- Daniel L. Pimentel-Alarcón (2018). [Mixture Matrix Completion](https://arxiv.org/pdf/1808.00616.pdf). arXiv:1808.00616.
-- Alexey Ozerov, Cédric Fevotte (2010). [Multichannel Nonnegative Matrix Factorization in Convolutive Mixtures for Audio Source Separation](researchgate.net/profile/Cedric-Fevotte/publication/224586165_Multichannel_Nonnegative_Matrix_Factorization_in_Convolutive_Mixtures_for_Audio_Source_Separation/links/54609a7a0cf295b561624095/Multichannel-Nonnegative-Matrix-Factorization-in-Convolutive-Mixtures-for-Audio-Source-Separation.pdf).  IEEE Transactions on Audio, Speech, and Language Processing, 18(3): 550 - 563.
+
+<br>
 
 ## Supported by
 
