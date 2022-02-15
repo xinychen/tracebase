@@ -219,6 +219,12 @@ for month in range(2, 4):
 
 <br>
 
+## Acknowledgement
+
+Data retrieved from Uber Movement, © 2022 Uber Technologies, Inc., [https://movement.uber.com](https://movement.uber.com).
+
+<br>
+
 ## Supported by
 
 <a href="https://ivado.ca/en">
