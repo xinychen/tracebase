@@ -12,6 +12,8 @@
 
 ## Data Processing
 
+> A detailed introduction to the [analysis of missing data problem in Uber movement speed data](https://medium.com/p/208d7a126af5) is available on Medium.
+
 ### Download Movement Speed Data
 
 1. Open the download page of Uber movement project. Take an example of New York City, please try to open [NYC Uber movement speed data](https://movement.uber.com/explore/new_york/speeds).
@@ -194,9 +196,7 @@ for threshold in 0.1 * np.arange(1, 10):
 ### Framework
 
 
-### Experiments
-
-#### Dataset
+### Dataset
 
 ```python
 import numpy as np
@@ -205,6 +205,8 @@ dense_mat = np.load('../datasets/NYC-movement-data-set/hourly_speed_mat_2019_1.n
 for month in range(2, 4):
     dense_mat = np.append(dense_mat, np.load('../datasets/NYC-movement-data-set/hourly_speed_mat_2019_{}.npz'.format(month))['arr_0'], axis = 1)
 ```
+
+### Experiments
 
 <br>
 
