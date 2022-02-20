@@ -208,6 +208,12 @@ for month in range(2, 4):
 
 ### Experiments
 
+Proposed models:
+
+Baseline models:
+
+1. [Temporal regularized matrix factorization](https://github.com/xinychen/tracebase/blob/main/models/TRMF-CG.ipynb)
+
 <br>
 
 ## Acknowledgement
