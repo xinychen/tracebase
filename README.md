@@ -208,11 +208,33 @@ for month in range(2, 4):
 
 ### Experiments
 
-Proposed models:
+#### Proposed Models
 
-Baseline models:
+#### Baseline Models
 
-1. [Temporal regularized matrix factorization](https://github.com/xinychen/tracebase/blob/main/models/TRMF-CG.ipynb)
+1. [Temporal regularized matrix factorization (TRMF)](https://github.com/xinychen/tracebase/blob/main/models/TRMF-CG.ipynb)
+
+#### Quick Start
+
+```python
+import numpy as np
+
+# Coming soon...
+```
+
+<br>
+
+## Features
+
+Tracebase provides a collection of time series forecasting approaches and algorithms for you. We aim to support you to explore traffic flow data in urban areas with machine learning models. We provide friendly implementation with a few lines relying on `pandas` and `numpy` packages.
+
+<br>
+
+## Cite Us
+
+```tex
+% Coming soon...
+```
 
 <br>
 
