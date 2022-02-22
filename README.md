@@ -225,6 +225,10 @@ for month in range(2, 4):
 #### Baseline Models
 
 1. [Temporal regularized matrix factorization (TRMF)](https://github.com/xinychen/tracebase/blob/main/models/TRMF-CG.ipynb)
+2. Temporal matrix factorization
+3. Bayesian temporal matrix factorization
+
+#### Results
 
 #### Quick Start
 
