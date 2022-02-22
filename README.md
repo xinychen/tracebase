@@ -82,6 +82,8 @@ The matrix's row corresponds to one specific road segment, while the column corr
 
 ### Use our Preprocessed Data
 
+#### NYC Uber Movement
+
 In this repository, we prepare the dataset and place it at the folder `datasets/NYC-movement-data-set`:
 
 - `hourly_speed_mat_2019_1.npz` (**91 MB**): data is of size 98,210 x 744 with 23,228,581 positive speed observations.
@@ -97,6 +99,8 @@ road = pd.read_csv('road.csv')
 i = data[(data.day > 11)].index
 data = data.drop(i)
 ```
+
+#### Seattle Uber Movement
 
 You can also consider to use the prepared Seattle Uber movement speed data at the folder `datasets/Seattle-movement-data-set`:
 
