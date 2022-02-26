@@ -80,7 +80,7 @@ del data, tensor
 
 The matrix's row corresponds to one specific road segment, while the column corresponds to one specific hour.
 
-### Use our Preprocessed Data
+### Use the Prepared Dataset
 
 #### NYC Uber Movement
 
@@ -204,11 +204,33 @@ for threshold in 0.1 * np.arange(1, 10):
 
 ### Problem Definition
 
+The basic idea of this work is introducing a multivariate time series forecasting problem with a special consideration on high-dimensionality and sparsity issues in real-world time series.
 
 ### Framework
 
 
-### Dataset
+### Experiments
+
+We evaluate the proposed model mainly on the Uber movement speed data because these time series data are featured as high-dimensional and sparse.
+
+#### Proposed Models
+
+#### Baseline Models
+
+1. [Temporal regularized matrix factorization (TRMF)](https://github.com/xinychen/tracebase/blob/main/models/TRMF-CG.ipynb)
+2. Bayesian temporal regularized matrix factorization (BTRMF)
+3. Temporal matrix factorization (TMF)
+4. Bayesian temporal matrix factorization (BTMF)
+
+#### Results
+
+#### Quick Start
+
+We write down the Python codes of our algorithms with NumPy package, possibly being easy for understanding each line. It should be no barrier for running these codes on any Python environment with a NumPy package. If you have any questions, feel free to create an issue in this repository.
+
+- **Define functions**
+
+- **Test on the dataset**
 
 ```python
 import numpy as np
@@ -216,24 +238,6 @@ import numpy as np
 dense_mat = np.load('../datasets/NYC-movement-data-set/hourly_speed_mat_2019_1.npz')['arr_0']
 for month in range(2, 4):
     dense_mat = np.append(dense_mat, np.load('../datasets/NYC-movement-data-set/hourly_speed_mat_2019_{}.npz'.format(month))['arr_0'], axis = 1)
-```
-
-### Experiments
-
-#### Proposed Models
-
-#### Baseline Models
-
-1. [Temporal regularized matrix factorization (TRMF)](https://github.com/xinychen/tracebase/blob/main/models/TRMF-CG.ipynb)
-2. Temporal matrix factorization
-3. Bayesian temporal matrix factorization
-
-#### Results
-
-#### Quick Start
-
-```python
-import numpy as np
 
 # Coming soon...
 ```
