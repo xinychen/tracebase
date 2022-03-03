@@ -31,3 +31,16 @@ missing_rate = 0.5
 ### Random missing (RM)
 sparse_mat = dense_mat * np.round(np.random.rand(dim[0], dim[1]) + 0.5 - missing_rate)
 ```
+
+- Google flu trends dataset
+
+This dataset is available from [https://github.com/fl16180/argonet](https://github.com/fl16180/argonet). For more details, please check out [Improved state-level influenza nowcasting in the United States leveraging Internet-based data and network approaches](https://www.nature.com/articles/s41467-018-08082-0).
+
+```python
+import pandas as pd
+import numpy as np
+
+data = pd.read_csv('GFT.csv', index_col = 0)
+dense_mat = data.values.T
+dense_mat = dense_mat[-97 :, :]
+```
