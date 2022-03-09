@@ -206,6 +206,14 @@ for threshold in 0.1 * np.arange(1, 10):
 
 The basic idea of this work is introducing a multivariate time series forecasting problem with a special consideration on high-dimensionality and sparsity issues in real-world time series.
 
+<p align="center">
+<img align="middle" src="graphics/prob.png" alt="drawing" height="220">
+</p>
+
+<p align="center"><b>Figure 3</b>: Illustration of the multivariate time series forecasting task on the incomplete data {<b>y</b>1, ..., <b>y</b>T}. Note that the time series are high-dimensional, sparse, and nonstationary.</p>
+
+
+
 ### Framework
 
 
