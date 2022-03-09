@@ -204,13 +204,13 @@ for threshold in 0.1 * np.arange(1, 10):
 
 ### Problem Definition
 
-The basic idea of this work is introducing a multivariate time series forecasting problem with a special consideration on high-dimensionality and sparsity issues in real-world time series.
+In this research, we aim at simultaneously handling the following emerging issues in real-world time series datasets: 1) **High-dimensionality** (i.e., large *N*): data is of large scale with thousands of multivariate variables. 2) **Sparsity and missing values**: data is incomplete with missing values, and sometime only a small fraction of data is observed due to the data collection mechanism. 3) **Nonstationarity**: real-world time series often show strong seasonality and trend. For instance, the Uber movement speed dataset registers traffic speed data from thousands of road segments with strong daily and weekly periodic patterns. And due to insufficient sampling and limited penetration of ridesharing vehicles, we only have access to a small fraction of observed value even in hourly resolution.
 
 <p align="center">
-<img align="middle" src="graphics/prob.png" alt="drawing" height="220">
+<img align="middle" src="graphics/prob.png" alt="drawing" height="200">
 </p>
 
-<p align="center"><b>Figure 3</b>: Illustration of the multivariate time series forecasting task on the incomplete data {<b>y</b>1, ..., <b>y</b>T}. Note that the time series are high-dimensional, sparse, and nonstationary.</p>
+<p align="center"><b>Figure 3</b>: Illustration of the multivariate time series forecasting task on the incomplete data {<b>y</b>1, <b>y</b>2, ..., <b>y</b>T}. Note that the time series are high-dimensional, sparse, and nonstationary.</p>
 
 
 
