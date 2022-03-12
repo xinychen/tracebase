@@ -225,7 +225,7 @@ We evaluate the proposed model mainly on the Uber movement speed data because th
 <img align="middle" src="graphics/forecasting.png" alt="drawing" height="170">
 </p>
 
-<p align="center"><b>Figure 3</b>: Illustration of the rolling forecasting scenario on multivariate time series data {<b>y</b>1, <b>y</b>2, ..., <b>y</b>9}. This example shows that the forecasting <b>time horizon is 2</b>, and what we need to forecast includes {<b>y</b>4, <b>y</b>5, <b>y</b>6, <b>y</b>7, <b>y</b>8, <b>y</b>9}.</p>
+<p align="center"><b>Figure 4</b>: Illustration of the rolling forecasting scenario on multivariate time series data {<b>y</b>1, <b>y</b>2, ..., <b>y</b>9}. This example shows that the forecasting <b>time horizon is 2</b>, and what we need to forecast includes {<b>y</b>4, <b>y</b>5, <b>y</b>6, <b>y</b>7, <b>y</b>8, <b>y</b>9}.</p>
 
 #### Proposed Models
 
