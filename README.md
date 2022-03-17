@@ -227,24 +227,24 @@ We evaluate the proposed model mainly on the Uber movement speed data because th
 
 <p align="center"><b>Figure 4</b>: Illustration of the rolling forecasting scenario on multivariate time series data {<b>y</b>1, <b>y</b>2, ..., <b>y</b>9}. This example shows that the forecasting <b>time horizon is 2</b>, and what we need to forecast includes {<b>y</b>4, <b>y</b>5, <b>y</b>6, <b>y</b>7, <b>y</b>8, <b>y</b>9}.</p>
 
-#### Proposed Models
+### Proposed Models
 
-#### Baseline Models
+### Baseline Models
 
 1. [Temporal regularized matrix factorization (TRMF)](https://github.com/xinychen/tracebase/blob/main/models/TRMF-CG.ipynb)
 2. Bayesian temporal regularized matrix factorization (BTRMF)
 3. Temporal matrix factorization (TMF)
 4. Bayesian temporal matrix factorization (BTMF)
 
-#### Results
+### Results
 
-#### Quick Start
+### Quick Start
 
 We write down the Python codes of our algorithms with NumPy package, possibly being easy for understanding each line. It should be no barrier for running these codes on any Python environment with a NumPy package. If you have any questions, feel free to create an issue in this repository.
 
 > Our Python implementation with `numpy` can be adapted to a GPU implementation with `cupy`, please replace `import numpy as np` by `import cupy as np`. It would not difficult to follow the experiment.
 
-##### **Define functions**
+#### Define functions
 
 - Use MAPE and RMSE as performance metrics.
 
@@ -274,9 +274,11 @@ def generate_Psi(T, d, season):
     return Psi
 ```
 
+<br>
+
 This is a classical approach for defining temporal operators, one effective alternative is defining these temporal operators as sparse arrays in both `numpy` and `cupy`. Please check out [How to define temporal operators as sparse arrays in both `numpy` (for CPU) and `cupy` (for GPU)?](https://github.com/xinychen/tracebase/issues/1)
 
-- **Test on the dataset**
+#### Test on the dataset
 
 ```python
 import numpy as np
