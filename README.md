@@ -244,7 +244,37 @@ We write down the Python codes of our algorithms with NumPy package, possibly be
 
 > Our Python implementation with `numpy` can be adapted to a GPU implementation with `cupy`, please replace `import numpy as np` by `import cupy as np`. It would not difficult to follow the experiment.
 
-- **Define functions**
+##### **Define functions**
+
+- Use MAPE and RMSE as performance metrics.
+
+```python
+def compute_mape(var, var_hat):
+    return np.sum(np.abs(var - var_hat) / var) / var.shape[0]
+
+def compute_rmse(var, var_hat):
+    return np.sqrt(np.sum((var - var_hat) ** 2) / var.shape[0])
+```
+
+- Generate temporal operators.
+
+```python
+def generate_Psi(T, d, season):
+    Psi = []
+    for k in range(0, d + 1):
+        if k == 0:
+            Psi.append(np.append(np.zeros((T - d - season, d)), 
+                                 np.append(-1 * np.eye(T - d - season), np.zeros((T - d - season, season)), axis = 1) 
+                                 + np.append(np.zeros((T - d - season, season)), np.eye(T - d - season), axis = 1), axis = 1))
+        else:
+            Psi.append(np.append(np.append(np.zeros((T - d - season, d - k)), 
+                                           np.append(-1 * np.eye(T - d - season), np.zeros((T - d - season, season)), axis = 1)
+                                           + np.append(np.zeros((T - d - season, season)), np.eye(T - d - season), axis = 1), axis = 1), 
+                                 np.zeros((T - d - season, k)), axis = 1))
+    return Psi
+```
+
+This is a classical approach for defining temporal operators, one effective alternative is defining these temporal operators as sparse arrays in both `numpy` and `cupy`. Please check out [How to define temporal operators as sparse arrays in both `numpy` (for CPU) and `cupy` (for GPU)?](https://github.com/xinychen/tracebase/issues/1)
 
 - **Test on the dataset**
 
