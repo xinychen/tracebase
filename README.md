@@ -276,6 +276,8 @@ def generate_Psi(T, d, season):
 
 - Define conjugate gradient for factor matrix.
 
+> For an intuitive explanation, please check out [using conjugate gradient to solve matrix equations](https://medium.com/p/7f16cbae18a3).
+
 ```python
 def update_cg(var, r, q, Aq, rold):
     alpha = rold / np.inner(q, Aq)
