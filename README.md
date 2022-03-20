@@ -274,6 +274,56 @@ def generate_Psi(T, d, season):
     return Psi
 ```
 
+- Define conjugate gradient for factor matrix.
+
+```python
+def update_cg(var, r, q, Aq, rold):
+    alpha = rold / np.inner(q, Aq)
+    var = var + alpha * q
+    r = r - alpha * Aq
+    rnew = np.inner(r, r)
+    q = r + (rnew / rold) * q
+    return var, r, q, rnew
+
+def ell_w(ind, W, X, rho):
+    return X @ ((W.T @ X) * ind).T + rho * W
+
+def conj_grad_w(sparse_mat, ind, W, X, rho, maxiter = 5):
+    rank, dim1 = W.shape
+    w = np.reshape(W, -1, order = 'F')
+    r = np.reshape(X @ sparse_mat.T - ell_w(ind, W, X, rho), -1, order = 'F')
+    q = r.copy()
+    rold = np.inner(r, r)
+    for it in range(maxiter):
+        Q = np.reshape(q, (rank, dim1), order = 'F')
+        Aq = np.reshape(ell_w(ind, Q, X, rho), -1, order = 'F')
+        w, r, q, rold = update_cg(w, r, q, Aq, rold)
+    return np.reshape(w, (rank, dim1), order = 'F')
+
+def ell_x(ind, W, X, A, Psi, d, lambda0, rho):
+    rank, dim2 = X.shape
+    temp = np.zeros((d * rank, Psi[0].shape[0]))
+    for k in range(1, d + 1):
+        temp[(k - 1) * rank : k * rank, :] = X @ Psi[k].T
+    temp1 = X @ Psi[0].T - A @ temp
+    temp2 = np.zeros((rank, dim2))
+    for k in range(d):
+        temp2 += A[:, k * rank : (k + 1) * rank].T @ temp1 @ Psi[k + 1]
+    return W @ ((W.T @ X) * ind) + rho * X + lambda0 * (temp1 @ Psi[0] - temp2)
+
+def conj_grad_x(sparse_mat, ind, W, X, A, Psi, d, lambda0, rho, maxiter = 5):
+    rank, dim2 = X.shape
+    x = np.reshape(X, -1, order = 'F')
+    r = np.reshape(W @ sparse_mat - ell_x(ind, W, X, A, Psi, d, lambda0, rho), -1, order = 'F')
+    q = r.copy()
+    rold = np.inner(r, r)
+    for it in range(maxiter):
+        Q = np.reshape(q, (rank, dim2), order = 'F')
+        Aq = np.reshape(ell_x(ind, W, Q, A, Psi, d, lambda0, rho), -1, order = 'F')
+        x, r, q, rold = update_cg(x, r, q, Aq, rold)
+    return np.reshape(x, (rank, dim2), order = 'F')
+```
+
 <br>
 
 This is a classical approach for defining temporal operators, one effective alternative is defining these temporal operators as sparse arrays in both `numpy` and `cupy`. Please check out [How to define temporal operators as sparse arrays in both `numpy` (for CPU) and `cupy` (for GPU)?](https://github.com/xinychen/tracebase/issues/1)
