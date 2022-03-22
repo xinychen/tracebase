@@ -171,8 +171,8 @@ plt.show()
 <br>
 
 <p align="center">
-<img align="middle" src="graphics/NYC_missing_rate_stat.png" alt="drawing" height="120">
-<img align="middle" src="graphics/Seattle_missing_rate_stat.png" alt="drawing" height="120">
+<img align="middle" src="graphics/NYC_missing_rate_stat.png" alt="drawing" width="370">
+<img align="middle" src="graphics/Seattle_missing_rate_stat.png" alt="drawing" width="370">
 </p>
 
 <p align="center"><b>Figure 2</b>: The missing rates of Uber movement speed data aggregated per week over the whole year of 2019. The red curve shows the aggregated missing rates in all 52 weeks. The red area shows the standard deviation of missing rates in each hour over 52 weeks. The 168 time steps refer to 168 hours of Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday, and Monday. (Left panel) The dataset has 98,210 road segments, and the <b>whole missing rate is 64.43%</b>. (Right panel) The dataset has 63,490 road segments, and the <b>whole missing rate is 84.95%</b>.</p>
@@ -207,7 +207,7 @@ for threshold in 0.1 * np.arange(1, 10):
 In this research, we aim at simultaneously handling the following emerging issues in real-world time series datasets: 1) **High-dimensionality** (i.e., large *N*): data is of large scale with thousands of multivariate variables. 2) **Sparsity and missing values**: data is incomplete with missing values, and sometime only a small fraction of data is observed due to the data collection mechanism. 3) **Nonstationarity**: real-world time series often show strong seasonality and trend. For instance, the Uber movement speed dataset registers traffic speed data from thousands of road segments with strong daily and weekly periodic patterns. And due to insufficient sampling and limited penetration of ridesharing vehicles, we only have access to a small fraction of observed value even in hourly resolution.
 
 <p align="center">
-<img align="middle" src="graphics/prob.png" alt="drawing" height="200">
+<img align="middle" src="graphics/prob.png" alt="drawing" width="260">
 </p>
 
 <p align="center"><b>Figure 3</b>: Illustration of the multivariate time series forecasting task on the incomplete data {<b>y</b>1, <b>y</b>2, ..., <b>y</b>T}. Note that the time series are high-dimensional, sparse, and nonstationary.</p>
@@ -217,7 +217,7 @@ In this research, we aim at simultaneously handling the following emerging issue
 The temporal matrix factorization consists of matrix factorization (on partially observed time series) and vector autoregressive (VAR) process (on temporal factors).
 
 <p align="center">
-<img align="middle" src="graphics/tmf.png" alt="drawing" height="160">
+<img align="middle" src="graphics/tmf.png" alt="drawing" width="700">
 </p>
 
 <p align="center"><b>Figure 4</b>:  Illustration of TMF on multivariate time series data. For spatiotemporal traffic states data, it can be factorized into spatial factors and temporal factors in which the temporal factor matrix is indeed a multivariate time series. We aim to impose a certain temporal modeling structure on temporal factor matrix.</p>
@@ -227,7 +227,7 @@ The temporal matrix factorization consists of matrix factorization (on partially
 We evaluate the proposed model mainly on the Uber movement speed data because these time series data are featured as high-dimensional and sparse. The rolling forecasting scenario is illustrated as follows.
 
 <p align="center">
-<img align="middle" src="graphics/forecasting.png" alt="drawing" height="170">
+<img align="middle" src="graphics/forecasting.png" alt="drawing" width="350">
 </p>
 
 <p align="center"><b>Figure 5</b>: Illustration of the rolling forecasting scenario on multivariate time series data {<b>y</b>1, <b>y</b>2, ..., <b>y</b>9}. This example shows that the forecasting <b>time horizon is 2</b>, and what we need to forecast includes {<b>y</b>4, <b>y</b>5, <b>y</b>6, <b>y</b>7, <b>y</b>8, <b>y</b>9}.</p>
