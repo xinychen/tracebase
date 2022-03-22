@@ -216,6 +216,11 @@ In this research, we aim at simultaneously handling the following emerging issue
 
 ### Framework
 
+The temporal matrix factorization consists of matrix factorization (on partially observed time series) and vector autoregressive (VAR) process (on temporal factors).
+
+<p align="center">
+<img align="middle" src="graphics/tmf.png" alt="drawing" height="160">
+</p>
 
 ### Experiments
 
@@ -229,14 +234,14 @@ We evaluate the proposed model mainly on the Uber movement speed data because th
 
 ### Proposed Models
 
+1. Nonstationary temporal matrix factorization (NoTMF)
+
 ### Baseline Models
 
 1. [Temporal regularized matrix factorization (TRMF)](https://github.com/xinychen/tracebase/blob/main/models/TRMF-CG.ipynb)
 2. Bayesian temporal regularized matrix factorization (BTRMF)
 3. Temporal matrix factorization (TMF)
 4. Bayesian temporal matrix factorization (BTMF)
-
-### Results
 
 ### Quick Start
 
@@ -273,6 +278,10 @@ def generate_Psi(T, d, season):
                                  np.zeros((T - d - season, k)), axis = 1))
     return Psi
 ```
+
+<br>
+
+This is a classical approach for defining temporal operators, one effective alternative is defining these temporal operators as sparse arrays in both `numpy` and `cupy`. Please check out [How to define temporal operators as sparse arrays in both `numpy` (for CPU) and `cupy` (for GPU)?](https://github.com/xinychen/tracebase/issues/1)
 
 - Define conjugate gradient for factor matrix.
 
@@ -326,9 +335,102 @@ def conj_grad_x(sparse_mat, ind, W, X, A, Psi, d, lambda0, rho, maxiter = 5):
     return np.reshape(x, (rank, dim2), order = 'F')
 ```
 
-<br>
+- Define nonstationary temporal matrix factorization (`notmf`).
 
-This is a classical approach for defining temporal operators, one effective alternative is defining these temporal operators as sparse arrays in both `numpy` and `cupy`. Please check out [How to define temporal operators as sparse arrays in both `numpy` (for CPU) and `cupy` (for GPU)?](https://github.com/xinychen/tracebase/issues/1)
+```python
+def notmf(dense_mat, sparse_mat, rank, d, lambda0, rho, season, maxiter):
+    dim1, dim2 = sparse_mat.shape
+    W = 0.01 * np.random.randn(rank, dim1)
+    X = 0.01 * np.random.randn(rank, dim2)
+    A = 0.01 * np.random.randn(rank, d * rank)
+    if np.isnan(sparse_mat).any() == False:
+        ind = sparse_mat != 0
+        pos_test = np.where((dense_mat != 0) & (sparse_mat == 0))
+    elif np.isnan(sparse_mat).any() == True:
+        pos_test = np.where((dense_mat != 0) & (np.isnan(sparse_mat)))
+        ind = ~np.isnan(sparse_mat)
+        sparse_mat[np.isnan(sparse_mat)] = 0
+    dense_test = dense_mat[pos_test]
+    del dense_mat
+    Psi = generate_Psi(dim2, d, season)
+    show_iter = 100
+    temp = np.zeros((d * rank, dim2 - d - season))
+    for it in range(maxiter):
+        W = conj_grad_w(sparse_mat, ind, W, X, rho)
+        X = conj_grad_x(sparse_mat, ind, W, X, A, Psi, d, lambda0, rho)
+        for k in range(1, d + 1):
+            temp[(k - 1) * rank : k * rank, :] = X @ Psi[k].T
+        A = X @ Psi[0].T @ np.linalg.pinv(temp)
+        mat_hat = W.T @ X
+        if (it + 1) % show_iter == 0:
+            temp_hat = mat_hat[pos_test]
+            print('Iter: {}'.format(it + 1))
+            print('MAPE: {:.6}'.format(compute_mape(dense_test, temp_hat)))
+            print('RMSE: {:.6}'.format(compute_rmse(dense_test, temp_hat)))
+            print()
+    return mat_hat, W, X, A
+
+def notmf_dic(obs, W, X, A, d, lambda0, rho, season):
+    dim1, dim2 = obs.shape
+    rank = X.shape[0]
+    if np.isnan(obs).any() == False:
+        ind = obs != 0
+    elif np.isnan(obs).any() == True:
+        ind = ~np.isnan(obs)
+        obs[np.isnan(obs)] = 0
+    Psi = generate_Psi(dim2, d, season)
+    X = conj_grad_x(obs, ind, W, X, A, Psi, d, lambda0, rho)
+    temp = np.zeros((d * rank, dim2 - d - season))
+    for k in range(1, d + 1):
+        temp[(k - 1) * rank : k * rank, :] = X @ Psi[k].T
+    A = X @ Psi[0].T @ np.linalg.pinv(temp)
+    return X, A
+```
+
+- Define the function for VAR forecasting.
+
+```python
+def var4cast(X, A, d, delta, season):
+    dim1, dim2 = X.shape
+    X_hat = np.append(X[:, season:] - X[:, : -season], np.zeros((dim1, delta)), axis = 1)
+    for t in range(delta):
+        X_hat[:, dim2 - season + t] = A @ X_hat[:, dim2 - season + t - np.arange(1, d + 1)].T.reshape(dim1 * d)
+    X = np.append(X, np.zeros((dim1, delta)), axis = 1)
+    for t in range(delta):
+        X[:, dim2 + t] = X[:, dim2 - season + t] + X_hat[:, dim2 - season + t]
+    return X
+```
+
+- Define the function for rolling forecasting.
+
+```python
+def rolling4cast(dense_mat, sparse_mat, pred_step, delta, rank, d, lambda0, rho, season, maxiter):
+    dim1, T = sparse_mat.shape
+    start_time = T - pred_step
+    max_count = int(np.ceil(pred_step / delta))
+    mat_hat = np.zeros((dim1, max_count * delta))
+    f = IntProgress(min = 0, max = max_count) # instantiate the bar
+    display(f) # display the bar
+    for t in range(max_count):
+        if t == 0:
+            _, W, X, A = notmf(dense_mat[:, : start_time], sparse_mat[:, : start_time], 
+                               rank, d, lambda0, rho, season, maxiter)
+        else:
+            X, A = notmf_dic(sparse_mat[:, : start_time + t * delta], W, X_new, A, d, lambda0, rho, season)
+        X_new = var4cast(X, A, d, delta, season)
+        mat_hat[:, t * delta : (t + 1) * delta] = W.T @ X_new[:, - delta :]
+        f.value = t
+    small_dense_mat = dense_mat[:, start_time : T]
+    pos = np.where(small_dense_mat != 0)
+    mape = compute_mape(small_dense_mat[pos], mat_hat[pos])
+    rmse = compute_rmse(small_dense_mat[pos], mat_hat[pos])
+    print('Prediction MAPE: {:.6}'.format(mape))
+    print('Prediction RMSE: {:.6}'.format(rmse))
+    print()
+    return mat_hat, W, X, A
+```
+
+<br>
 
 #### Test on the dataset
 
@@ -339,7 +441,24 @@ dense_mat = np.load('../datasets/NYC-movement-data-set/hourly_speed_mat_2019_1.n
 for month in range(2, 4):
     dense_mat = np.append(dense_mat, np.load('../datasets/NYC-movement-data-set/hourly_speed_mat_2019_{}.npz'.format(month))['arr_0'], axis = 1)
 
-# Coming soon...
+import time
+for rank in [10]: # rank of matrix factorization
+    for delta in [1, 2, 3, 6]: # forecasting time horizon
+        for d in [6]: # order of VAR
+            start = time.time()
+            dim1, dim2 = dense_mat.shape
+            pred_step = 7 * 24
+            lambda0 = 1
+            rho =  5
+            season = 7 * 24
+            maxiter = 50
+            mat_hat, W, X, A = rolling4cast(dense_mat[:, : 24 * 7 * 10], dense_mat[:, : 24 * 7 * 10], 
+                                            pred_step, delta, rank, d, lambda0, rho, season, maxiter)
+            print('delta = {}'.format(delta))
+            print('rank R = {}'.format(rank))
+            print('Order d = {}'.format(d))
+            end = time.time()
+            print('Running time: %d seconds'%(end - start))
 ```
 
 <br>
@@ -352,8 +471,17 @@ Tracebase provides a collection of time series forecasting approaches and algori
 
 ## Cite Us
 
+> Xinyu Chen, Chengyuan Zhang, Xi-Le Zhao, Nicolas Saunier, Lijun Sun (2022). Nonstationary temporal matrix factorization for multivariate time series forecasting. arXiv preprint arXiv:2203.10651.
+
+or
+
 ```tex
-% Coming soon...
+@article{chen2022nonstationary,
+  title={Nonstationary temporal matrix factorization for multivariate time series forecasting},
+  author={Chen, Xinyu and Zhang, Chengyuan and Zhao, Xi-Le and Saunier, Nicolas and Sun, Lijun},
+  journal={arXiv preprint arXiv:2203.10651},
+  year={2022}
+}
 ```
 
 <br>
