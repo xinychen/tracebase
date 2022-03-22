@@ -212,8 +212,6 @@ In this research, we aim at simultaneously handling the following emerging issue
 
 <p align="center"><b>Figure 3</b>: Illustration of the multivariate time series forecasting task on the incomplete data {<b>y</b>1, <b>y</b>2, ..., <b>y</b>T}. Note that the time series are high-dimensional, sparse, and nonstationary.</p>
 
-
-
 ### Framework
 
 The temporal matrix factorization consists of matrix factorization (on partially observed time series) and vector autoregressive (VAR) process (on temporal factors).
@@ -221,6 +219,8 @@ The temporal matrix factorization consists of matrix factorization (on partially
 <p align="center">
 <img align="middle" src="graphics/tmf.png" alt="drawing" height="160">
 </p>
+
+<p align="center"><b>Figure 4</b>:  Illustration of TMF on multivariate time series data. For spatiotemporal traffic states data, it can be factorized into spatial factors and temporal factors in which the temporal factor matrix is indeed a multivariate time series. We aim to impose a certain temporal modeling structure on temporal factor matrix.</p>
 
 ### Experiments
 
@@ -230,7 +230,7 @@ We evaluate the proposed model mainly on the Uber movement speed data because th
 <img align="middle" src="graphics/forecasting.png" alt="drawing" height="170">
 </p>
 
-<p align="center"><b>Figure 4</b>: Illustration of the rolling forecasting scenario on multivariate time series data {<b>y</b>1, <b>y</b>2, ..., <b>y</b>9}. This example shows that the forecasting <b>time horizon is 2</b>, and what we need to forecast includes {<b>y</b>4, <b>y</b>5, <b>y</b>6, <b>y</b>7, <b>y</b>8, <b>y</b>9}.</p>
+<p align="center"><b>Figure 5</b>: Illustration of the rolling forecasting scenario on multivariate time series data {<b>y</b>1, <b>y</b>2, ..., <b>y</b>9}. This example shows that the forecasting <b>time horizon is 2</b>, and what we need to forecast includes {<b>y</b>4, <b>y</b>5, <b>y</b>6, <b>y</b>7, <b>y</b>8, <b>y</b>9}.</p>
 
 ### Proposed Models
 
