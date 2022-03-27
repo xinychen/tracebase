@@ -404,6 +404,9 @@ def var4cast(X, A, d, delta, season):
 - Define the function for rolling forecasting.
 
 ```python
+from ipywidgets import IntProgress
+from IPython.display import display
+
 def rolling4cast(dense_mat, sparse_mat, pred_step, delta, rank, d, lambda0, rho, season, maxiter):
     dim1, T = sparse_mat.shape
     start_time = T - pred_step
