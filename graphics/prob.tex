@@ -1,0 +1,52 @@
+\documentclass[border=0.2cm, 12pt, convert = false]{standalone}
+\usepackage{amsmath, amsthm, amssymb, amsfonts}
+\usepackage{tikz}
+\usepackage{helvet}
+\renewcommand{\familydefault}{\sfdefault}
+
+\begin{document}
+\begin{tikzpicture}
+  
+\newcommand{\locone}{0}
+
+\filldraw [fill=cyan!30!white,draw=green!40!black] (\locone,0-0.5) rectangle (\locone+2,3-0.5);
+
+\filldraw [fill=gray!30] (\locone,0) rectangle (\locone+0.5,0.5);
+\filldraw [fill=gray!30] (\locone,1) rectangle (\locone+0.5,1.5);
+\filldraw [fill=gray!30] (\locone+0.5,1.5) rectangle (\locone+1,2);
+\filldraw [fill=gray!30] (\locone+1,0.5) rectangle (\locone+1.5,1);
+\filldraw [fill=gray!30] (\locone+1.5,2) rectangle (\locone+2,2.5);
+
+\draw [step=0.5, very thick, color=white] (\locone+0,0-0.5) grid (\locone+2,3-0.5);
+\draw [thick] (\locone,0-0.5) rectangle (\locone+2,3-0.5);
+
+\node at (\locone+0.25,2.8) {\footnotesize\color{black}$\boldsymbol{y}_1$};
+\node at (\locone+0.75,2.8) {\footnotesize\color{black}$\boldsymbol{y}_2$};
+\node at (\locone+1.25,2.8) {\footnotesize\color{black}$\cdots$};
+\node at (\locone+1.75,2.8) {\footnotesize\color{black}$\boldsymbol{y}_T$};
+\node at (\locone+1,-0.9) {\small data};
+
+\node at (\locone+0.25,0.25) {\color{black}?};
+\node at (\locone+0.25,1.25) {\color{black}?};
+\node at (\locone+0.75,1.75) {\color{black}?};
+\node at (\locone+1.25,0.75) {\color{black}?};
+\node at (\locone+1.75,2.25) {\color{black}?};
+
+\node at (\locone+3,1) {\Large\color{gray}$\Longrightarrow$};
+\node at (\locone+3,1.5) {\small model};
+
+\newcommand{\loctwo}{4}
+
+\filldraw [fill=red!25,draw=green!40!black] (\loctwo,0-0.5) rectangle (\loctwo+1.5,3-0.5);
+\draw [step=0.5, very thick, color=white] (\loctwo+0,0-0.5) grid (\loctwo+1.5,3-0.5);
+\draw [thick] (\loctwo,0-0.5) rectangle (\loctwo+1.5,3-0.5);
+
+\node at (\loctwo+0.75,-0.9) {\small forecasts};
+
+\node at (\loctwo,2.8) {\footnotesize\color{black}$\hat{\boldsymbol{y}}_{T+1}$};
+\node at (\loctwo+0.75,2.8) {\footnotesize\color{black}$\cdots$};
+\node at (\loctwo+1.5,2.8) {\footnotesize\color{black}$\hat{\boldsymbol{y}}_{T+\delta}$};
+
+\end{tikzpicture}
+
+\end{document}
