@@ -234,7 +234,7 @@ We evaluate the proposed model mainly on the Uber movement speed data because th
 
 ### Proposed Models
 
-1. Nonstationary temporal matrix factorization (NoTMF)
+1. [Nonstationary temporal matrix factorization (NoTMF)](https://github.com/xinychen/tracebase/blob/main/models/NoTMF.ipynb)
 
 ### Baseline Models
 
