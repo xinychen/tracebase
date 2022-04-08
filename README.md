@@ -474,7 +474,7 @@ Tracebase provides a collection of time series forecasting approaches and algori
 
 ## Cite Us
 
-> Xinyu Chen, Chengyuan Zhang, Xi-Le Zhao, Nicolas Saunier, Lijun Sun (2022). Nonstationary temporal matrix factorization for multivariate time series forecasting. arXiv preprint arXiv:2203.10651.
+- Xinyu Chen, Chengyuan Zhang, Xi-Le Zhao, Nicolas Saunier, Lijun Sun (2022). Nonstationary temporal matrix factorization for multivariate time series forecasting. arXiv preprint arXiv:2203.10651. [[PDF](https://arxiv.org/abs/2203.10651v1)] [[Slides](https://xinychen.github.io/slides/notmf.pdf)] [[Data & Python code](https://github.com/xinychen/tracebase)] [[Blog post](https://medium.com/p/b1c59faf05ea)]
 
 or
 
