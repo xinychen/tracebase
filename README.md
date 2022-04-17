@@ -395,7 +395,10 @@ def var4cast(X, A, d, delta, season):
     X_hat = np.append(X[:, season:] - X[:, : -season], np.zeros((dim1, delta)), axis = 1)
     for t in range(delta):
         X_hat[:, dim2 - season + t] = A @ X_hat[:, dim2 - season + t - np.arange(1, d + 1)].T.reshape(dim1 * d)
-    return X[:, dim2 - season : dim2 - season + delta] + X_hat[:, - delta :]
+    X = np.append(X, np.zeros((dim1, delta)), axis = 1)
+    for t in range(delta):
+        X[:, dim2 + t] = X[:, dim2 - season + t] + X_hat[:, dim2 - season + t]
+    return X
 ```
 
 - Define the function for rolling forecasting.
