@@ -446,7 +446,6 @@ for rank in [10]: # rank of matrix factorization
     for delta in [1, 2, 3, 6]: # forecasting time horizon
         for d in [6]: # order of VAR
             start = time.time()
-            dim1, dim2 = dense_mat.shape
             pred_step = 7 * 24
             lambda0 = 1
             rho =  5
