@@ -424,7 +424,7 @@ def rolling4cast(dense_mat, sparse_mat, pred_step, delta, rank, d, lambda0, rho,
         mat_hat[:, t * delta : (t + 1) * delta] = W.T @ X_new[:, - delta :]
         f.value = t
     small_dense_mat = dense_mat[:, start_time : T]
-    pos = np.where(small_dense_mat != 0)
+    pos = np.where((small_dense_mat != 0) & (np.invert(np.isnan(small_dense_mat))))
     mape = compute_mape(small_dense_mat[pos], mat_hat[pos])
     rmse = compute_rmse(small_dense_mat[pos], mat_hat[pos])
     print('Prediction MAPE: {:.6}'.format(mape))
