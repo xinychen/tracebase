@@ -240,8 +240,9 @@ We evaluate the proposed model mainly on the Uber movement speed data because th
 
 1. [Temporal regularized matrix factorization (TRMF)](https://github.com/xinychen/tracebase/blob/main/models/TRMF-CG.ipynb)
 2. Bayesian temporal regularized matrix factorization (BTRMF)
-3. Temporal matrix factorization (TMF)
+3. [Temporal matrix factorization (TMF)](https://github.com/xinychen/tracebase/blob/main/models/TMF.ipynb)
 4. Bayesian temporal matrix factorization (BTMF)
+5. [NoTMF with both seasonal differencing and first-order differencing (NoTMF-1st)](https://github.com/xinychen/tracebase/blob/main/models/NoTMF-1st.ipynb)
 
 ### Quick Start
 
