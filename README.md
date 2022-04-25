@@ -466,6 +466,14 @@ for rank in [10]: # rank of matrix factorization
 
 <br>
 
+### Blog Posts
+
+1. [Analyzing missing data problem in Uber movement speed data](https://medium.com/p/208d7a126af5). February 14, 2022.
+2. [Temporal matrix factorization for multivariate time series forecasting](https://medium.com/p/b1c59faf05ea). March 20, 2022.
+3. [Forecasting multivariate time series with nonstationary temporal matrix factorization](https://medium.com/p/4705df163fcf). April 25, 2022.
+
+<br>
+
 ## Features
 
 Tracebase provides a collection of time series forecasting approaches and algorithms for you. We aim to support you to explore traffic flow data in urban areas with machine learning models. We provide friendly implementation with a few lines relying on `pandas` and `numpy` packages.
