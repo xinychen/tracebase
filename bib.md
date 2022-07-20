@@ -16,9 +16,15 @@
 ### Deep prior
 
  1. [Deep image prior](https://dmitryulyanov.github.io/deep_image_prior)
- 2. [Implicit Regularization in Tensor Factorization](https://arxiv.org/pdf/2102.09972.pdf). arXiv preprint, 2021.
- 3. [Compressive Spectral Image Reconstruction using Deep Prior and Low-Rank Tensor Representation](https://arxiv.org/pdf/2101.07424.pdf). arXiv preprint, 2021.
- 4. [DeepTensor: Low-Rank Tensor Decomposition with Deep Network Priors](https://arxiv.org/pdf/2204.03145.pdf). arXiv preprint, 2022.
+ 2. [On the Connection Between Learning Two-Layer Neural Networks and Tensor Decomposition](http://proceedings.mlr.press/v89/mondelli19a/mondelli19a.pdf). ICML 2019.
+ 3. [Implicit Regularization in Deep Matrix Factorization](https://papers.nips.cc/paper/2019/file/c0c783b5fc0d7d808f1d14a6e9c8280d-Paper.pdf). NeurIPS 2019. [[Python code](https://github.com/roosephu/deep_matrix_factorization)]
+ 4. [Understanding implicit regularization in deep learning by analyzing trajectories of gradient descent](http://www.offconvex.org/2019/07/10/trajectories-linear-nets/), 2019.
+ 5. [Can implicit regularization in deep learning be explained by norms?](http://www.offconvex.org/2020/11/27/reg_dl_not_norm/) 2020.
+ 6. [Implicit Regularization in Tensor Factorization: Can Tensor Rank Shed Light on Generalization in Deep Learning?](http://www.offconvex.org/2021/07/08/imp-reg-tf/) 2021.
+ 7. [Implicit Regularization in Tensor Factorization](https://arxiv.org/pdf/2102.09972.pdf). arXiv preprint, 2021.
+ 8. [Compressive Spectral Image Reconstruction using Deep Prior and Low-Rank Tensor Representation](https://arxiv.org/pdf/2101.07424.pdf). arXiv preprint, 2021.
+ 9. [DeepTensor: Low-Rank Tensor Decomposition with Deep Network Priors](https://arxiv.org/pdf/2204.03145.pdf). arXiv preprint, 2022.
+ 10. [Implicit Regularization in Hierarchical Tensor Factorization and Deep Convolutional Neural Networks](https://arxiv.org/pdf/2201.11729.pdf). ICML 2022.
 
 ### Irregularly-sampled time series
 
