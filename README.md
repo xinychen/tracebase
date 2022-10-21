@@ -471,6 +471,9 @@ for rank in [10]: # rank of matrix factorization
 1. [Analyzing missing data problem in Uber movement speed data](https://medium.com/p/208d7a126af5). February 14, 2022.
 2. [Temporal matrix factorization for multivariate time series forecasting](https://medium.com/p/b1c59faf05ea). March 20, 2022.
 3. [Forecasting multivariate time series with nonstationary temporal matrix factorization](https://medium.com/p/4705df163fcf). April 25, 2022.
+4. [Convolution nuclear norm minimization for time series modeling](https://medium.com/p/377c56e49962). October 3, 2022.
+5. [Reinforce matrix factorization for time series modeling: Probabilistic sequential matrix factorization](https://medium.com/p/873f4ca344de). October 5, 2022.
+6. [Discrete convolution and fast Fourier transform explained and implemented step by step](https://medium.com/p/83ff1809378d). October 19, 2022.
 
 <br>
 
@@ -482,7 +485,7 @@ Tracebase provides a collection of time series forecasting approaches and algori
 
 ## Cite Us
 
-- Xinyu Chen, Chengyuan Zhang, Xi-Le Zhao, Nicolas Saunier, Lijun Sun (2022). Nonstationary temporal matrix factorization for multivariate time series forecasting. arXiv preprint arXiv:2203.10651. [[PDF](https://arxiv.org/abs/2203.10651)] [[Slides](https://xinychen.github.io/slides/notmf.pdf)] [[Data & Python code](https://github.com/xinychen/tracebase)] [[Blog post](https://medium.com/p/b1c59faf05ea)]
+- Xinyu Chen, Chengyuan Zhang, Xi-Le Zhao, Nicolas Saunier, Lijun Sun (2022). **Nonstationary temporal matrix factorization for multivariate time series forecasting**. arXiv preprint arXiv:2203.10651. [[PDF](https://arxiv.org/abs/2203.10651)] [[Slides](https://xinychen.github.io/slides/notmf.pdf)] [[Data & Python code](https://github.com/xinychen/tracebase)]
 
 or
 
