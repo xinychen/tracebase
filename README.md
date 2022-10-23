@@ -312,7 +312,7 @@ def conj_grad_w(sparse_mat, ind, W, X, rho, maxiter = 5):
         w, r, q, rold = update_cg(w, r, q, Aq, rold)
     return np.reshape(w, (rank, dim1), order = 'F')
 
-def ell_x(ind, W, X, A, Psi, d, lambda0, rho):
+def ell_x(ind, W, X, A, Psi, d, lmbda, rho):
     rank, dim2 = X.shape
     temp = np.zeros((d * rank, Psi[0].shape[0]))
     for k in range(1, d + 1):
@@ -321,17 +321,17 @@ def ell_x(ind, W, X, A, Psi, d, lambda0, rho):
     temp2 = np.zeros((rank, dim2))
     for k in range(d):
         temp2 += A[:, k * rank : (k + 1) * rank].T @ temp1 @ Psi[k + 1]
-    return W @ ((W.T @ X) * ind) + rho * X + lambda0 * (temp1 @ Psi[0] - temp2)
+    return W @ ((W.T @ X) * ind) + rho * X + lmbda * (temp1 @ Psi[0] - temp2)
 
-def conj_grad_x(sparse_mat, ind, W, X, A, Psi, d, lambda0, rho, maxiter = 5):
+def conj_grad_x(sparse_mat, ind, W, X, A, Psi, d, lmbda, rho, maxiter = 5):
     rank, dim2 = X.shape
     x = np.reshape(X, -1, order = 'F')
-    r = np.reshape(W @ sparse_mat - ell_x(ind, W, X, A, Psi, d, lambda0, rho), -1, order = 'F')
+    r = np.reshape(W @ sparse_mat - ell_x(ind, W, X, A, Psi, d, lmbda, rho), -1, order = 'F')
     q = r.copy()
     rold = np.inner(r, r)
     for it in range(maxiter):
         Q = np.reshape(q, (rank, dim2), order = 'F')
-        Aq = np.reshape(ell_x(ind, W, Q, A, Psi, d, lambda0, rho), -1, order = 'F')
+        Aq = np.reshape(ell_x(ind, W, Q, A, Psi, d, lmbda, rho), -1, order = 'F')
         x, r, q, rold = update_cg(x, r, q, Aq, rold)
     return np.reshape(x, (rank, dim2), order = 'F')
 ```
@@ -339,7 +339,7 @@ def conj_grad_x(sparse_mat, ind, W, X, A, Psi, d, lambda0, rho, maxiter = 5):
 - Define nonstationary temporal matrix factorization (`notmf`).
 
 ```python
-def notmf(dense_mat, sparse_mat, rank, d, lambda0, rho, season, maxiter):
+def notmf(dense_mat, sparse_mat, rank, d, lmbda, rho, season, maxiter):
     dim1, dim2 = sparse_mat.shape
     W = 0.01 * np.random.randn(rank, dim1)
     X = 0.01 * np.random.randn(rank, dim2)
@@ -358,7 +358,7 @@ def notmf(dense_mat, sparse_mat, rank, d, lambda0, rho, season, maxiter):
     temp = np.zeros((d * rank, dim2 - d - season))
     for it in range(maxiter):
         W = conj_grad_w(sparse_mat, ind, W, X, rho)
-        X = conj_grad_x(sparse_mat, ind, W, X, A, Psi, d, lambda0, rho)
+        X = conj_grad_x(sparse_mat, ind, W, X, A, Psi, d, lmbda, rho)
         for k in range(1, d + 1):
             temp[(k - 1) * rank : k * rank, :] = X @ Psi[k].T
         A = X @ Psi[0].T @ np.linalg.pinv(temp)
@@ -371,7 +371,7 @@ def notmf(dense_mat, sparse_mat, rank, d, lambda0, rho, season, maxiter):
             print()
     return mat_hat, W, X, A
 
-def notmf_dic(obs, W, X, A, d, lambda0, rho, season):
+def notmf_dic(obs, W, X, A, d, lmbda, rho, season):
     dim1, dim2 = obs.shape
     rank = X.shape[0]
     if np.isnan(obs).any() == False:
@@ -380,7 +380,7 @@ def notmf_dic(obs, W, X, A, d, lambda0, rho, season):
         ind = ~np.isnan(obs)
         obs[np.isnan(obs)] = 0
     Psi = generate_Psi(dim2, d, season)
-    X = conj_grad_x(obs, ind, W, X, A, Psi, d, lambda0, rho)
+    X = conj_grad_x(obs, ind, W, X, A, Psi, d, lmbda, rho)
     temp = np.zeros((d * rank, dim2 - d - season))
     for k in range(1, d + 1):
         temp[(k - 1) * rank : k * rank, :] = X @ Psi[k].T
@@ -408,7 +408,7 @@ def var4cast(X, A, d, delta, season):
 from ipywidgets import IntProgress
 from IPython.display import display
 
-def rolling4cast(dense_mat, sparse_mat, pred_step, delta, rank, d, lambda0, rho, season, maxiter):
+def rolling4cast(dense_mat, sparse_mat, pred_step, delta, rank, d, lmbda, rho, season, maxiter):
     dim1, T = sparse_mat.shape
     start_time = T - pred_step
     max_count = int(np.ceil(pred_step / delta))
@@ -418,9 +418,9 @@ def rolling4cast(dense_mat, sparse_mat, pred_step, delta, rank, d, lambda0, rho,
     for t in range(max_count):
         if t == 0:
             _, W, X, A = notmf(dense_mat[:, : start_time], sparse_mat[:, : start_time], 
-                               rank, d, lambda0, rho, season, maxiter)
+                               rank, d, lmbda, rho, season, maxiter)
         else:
-            X, A = notmf_dic(sparse_mat[:, : start_time + t * delta], W, X_new, A, d, lambda0, rho, season)
+            X, A = notmf_dic(sparse_mat[:, : start_time + t * delta], W, X_new, A, d, lmbda, rho, season)
         X_new = var4cast(X, A, d, delta, season)
         mat_hat[:, t * delta : (t + 1) * delta] = W.T @ X_new[:, - delta :]
         f.value = t
@@ -451,12 +451,12 @@ for rank in [10]: # rank of matrix factorization
         for d in [6]: # order of VAR
             start = time.time()
             pred_step = 7 * 24
-            lambda0 = 1
+            lmbda = 1
             rho =  5
             season = 7 * 24
             maxiter = 50
             mat_hat, W, X, A = rolling4cast(dense_mat[:, : 24 * 7 * 10], dense_mat[:, : 24 * 7 * 10], 
-                                            pred_step, delta, rank, d, lambda0, rho, season, maxiter)
+                                            pred_step, delta, rank, d, lmbda, rho, season, maxiter)
             print('delta = {}'.format(delta))
             print('rank R = {}'.format(rank))
             print('Order d = {}'.format(d))
