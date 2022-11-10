@@ -204,13 +204,13 @@ for threshold in 0.1 * np.arange(1, 10):
 
 ### Problem Definition
 
-In this research, we aim at simultaneously handling the following emerging issues in real-world time series datasets: 1) **High-dimensionality** (i.e., large *N*): data is of large scale with thousands of multivariate variables. 2) **Sparsity and missing values**: data is incomplete with missing values, and sometime only a small fraction of data is observed due to the data collection mechanism. 3) **Nonstationarity**: real-world time series often show strong seasonality and trend. For instance, the Uber movement speed dataset registers traffic speed data from thousands of road segments with strong daily and weekly periodic patterns. And due to insufficient sampling and limited penetration of ridesharing vehicles, we only have access to a small fraction of observed value even in hourly resolution.
+In this research, we aim at simultaneously handling the following emerging issues in real-world time series datasets: 1) **High-dimensionality** (i.e., large $N$): data is of large scale with thousands of multivariate variables. 2) **Sparsity and missing values**: data is incomplete with missing values, and sometime only a small fraction of data is observed due to the data collection mechanism. 3) **Nonstationarity**: real-world time series often show strong seasonality and trend. For instance, the Uber movement speed dataset registers traffic speed data from thousands of road segments with strong daily and weekly periodic patterns. And due to insufficient sampling and limited penetration of ridesharing vehicles, we only have access to a small fraction of observed value even in hourly resolution.
 
 <p align="center">
 <img align="middle" src="graphics/prob.png" alt="drawing" width="260">
 </p>
 
-<p align="center"><b>Figure 3</b>: Illustration of the multivariate time series forecasting task on the incomplete data {<b>y</b>1, <b>y</b>2, ..., <b>y</b>T}. Note that the time series are high-dimensional, sparse, and nonstationary.</p>
+<p align="center"><b>Figure 3</b>: Illustration of the multivariate time series forecasting task on the incomplete data $\{\boldsymbol{y}_{1},\boldsymbol{y}_{2},\ldots,\boldsymbol{y}_{T}\}$. Note that the time series are high-dimensional, sparse, and nonstationary.</p>
 
 ### Framework
 
@@ -230,7 +230,7 @@ We evaluate the proposed model mainly on the Uber movement speed data because th
 <img align="middle" src="graphics/forecasting.png" alt="drawing" width="350">
 </p>
 
-<p align="center"><b>Figure 5</b>: Illustration of the rolling forecasting scenario on multivariate time series data {<b>y</b>1, <b>y</b>2, ..., <b>y</b>9}. This example shows that the forecasting <b>time horizon is 2</b>, and what we need to forecast includes {<b>y</b>4, <b>y</b>5, <b>y</b>6, <b>y</b>7, <b>y</b>8, <b>y</b>9}.</p>
+<p align="center"><b>Figure 5</b>: Illustration of the rolling forecasting scenario on multivariate time series data $\{\boldsymbol{y}_1,\boldsymbol{y}_2,\ldots,\boldsymbol{y}_9\}$. This example shows that the forecasting <b>time horizon is 2</b>, and what we need to forecast includes $\{\boldsymbol{y}_{4},\boldsymbol{y}_{5},\boldsymbol{y}_{6},\boldsymbol{y}_{7},\boldsymbol{y}_{8},\boldsymbol{y}_{9}\}$.</p>
 
 ### Proposed Models
 
