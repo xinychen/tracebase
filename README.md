@@ -474,6 +474,7 @@ for rank in [10]: # rank of matrix factorization
 4. [Convolution nuclear norm minimization for time series modeling](https://medium.com/p/377c56e49962). October 3, 2022.
 5. [Reinforce matrix factorization for time series modeling: Probabilistic sequential matrix factorization](https://medium.com/p/873f4ca344de). October 5, 2022.
 6. [Discrete convolution and fast Fourier transform explained and implemented step by step](https://medium.com/p/83ff1809378d). October 19, 2022.
+7. [Low-rank matrix and tensor factorization for speed field reconstruction](https://medium.com/p/bb4807cb93c5). March 9, 2023.
 
 <br>
 
