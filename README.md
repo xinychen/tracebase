@@ -250,7 +250,7 @@ We evaluate the proposed model mainly on the Uber movement speed data because th
 
 We implement our algorithms with NumPy library, possibly being easy for understanding each line. It should be no barrier for running these codes on any Python environment with a NumPy library. If you have any questions, feel free to create an issue in this repository. If you are looking for an intuitive explanation, please check out our blog post [temporal matrix factorization for multivariate time series forecasting](https://medium.com/p/b1c59faf05ea) on Medium.
 
-> Our Python implementation with `numpy` can be adapted to a GPU implementation with `cupy`, please replace `import numpy as np` by `import cupy as np`. It would not difficult to follow the experiment.
+> Our Python implementation with `numpy` can be adapted to a GPU implementation with `cupy`, please replace `import numpy as np` by `import cupy as np`. It would be not difficult to follow the experiment.
 
 #### Define functions
 
