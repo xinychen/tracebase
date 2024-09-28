@@ -169,7 +169,7 @@ ax.tick_params(direction = "in")
 ax.set_xlim([-1, 7 * 24])
 # ax.set_ylim([0.6, 1])
 plt.show()
-# fig.savefig("NYC_missing_rate_stat.pdf", bbox_inches = "tight")
+# fig.savefig('NYC_missing_rate_stat.pdf', bbox_inches = 'tight')
 ```
 
 <br>
