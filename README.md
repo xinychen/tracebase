@@ -490,16 +490,16 @@ Tracebase provides a collection of time series forecasting approaches and algori
 
 ## Cite Us
 
-- Xinyu Chen, Chengyuan Zhang, Xi-Le Zhao, Nicolas Saunier, Lijun Sun (2022). **Nonstationary temporal matrix factorization for multivariate time series forecasting**. arXiv preprint arXiv:2203.10651. [[PDF](https://arxiv.org/abs/2203.10651)] [[Slides](https://xinychen.github.io/slides/notmf.pdf)] [[Data & Python code](https://github.com/xinychen/tracebase)]
+- Xinyu Chen, Chengyuan Zhang, Xi-Le Zhao, Nicolas Saunier, Lijun Sun (2025). **Forecasting sparse movement speed of urban road networks with nonstationary temporal matrix factorization**. Transportation Science. [[PDF](https://xinychen.github.io/papers/notmf.pdf)] [[Slides](https://xinychen.github.io/slides/notmf.pdf)] [[Data & Python code](https://github.com/xinychen/tracebase)]
 
 or
 
 ```tex
-@article{chen2022nonstationary,
-  title={Nonstationary temporal matrix factorization for multivariate time series forecasting},
+@article{chen2025nonstationary,
+  title={Forecasting sparse movement speed of urban road networks with nonstationary temporal matrix factorization},
   author={Chen, Xinyu and Zhang, Chengyuan and Zhao, Xi-Le and Saunier, Nicolas and Sun, Lijun},
-  journal={arXiv preprint arXiv:2203.10651},
-  year={2022}
+  journal={Transportation Science},
+  year={2025}
 }
 ```
 
