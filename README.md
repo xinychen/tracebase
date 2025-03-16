@@ -491,6 +491,7 @@ Tracebase provides a collection of time series forecasting approaches and algori
 ## Cite Us
 
 - Xinyu Chen, Chengyuan Zhang, Xi-Le Zhao, Nicolas Saunier, Lijun Sun (2025). **Forecasting sparse movement speed of urban road networks with nonstationary temporal matrix factorization**. Transportation Science. [[PDF](https://xinychen.github.io/papers/notmf.pdf)] [[Slides](https://xinychen.github.io/slides/notmf.pdf)] [[Data & Python code](https://github.com/xinychen/tracebase)]
+- Xinyu Chen, Xi-Le Zhao, Chun Cheng (2025). **Forecasting urban traffic states with sparse data using Hankel temporal matrix factorization**. INFORMS Journal on Computing. [[PDF](https://xinychen.github.io/papers/Hankel_forecasting.pdf)] [[Data & Python code](https://github.com/xinychen/tracebase)]
 
 or
 
@@ -499,6 +500,13 @@ or
   title={Forecasting sparse movement speed of urban road networks with nonstationary temporal matrix factorization},
   author={Chen, Xinyu and Zhang, Chengyuan and Zhao, Xi-Le and Saunier, Nicolas and Sun, Lijun},
   journal={Transportation Science},
+  year={2025}
+}
+
+@article{chen2025nonstationary,
+  title={Forecasting urban traffic states with sparse data using Hankel temporal matrix factorization},
+  author={Chen, Xinyu and Zhao, Xi-Le and Cheng, Chun},
+  journal={INFORMS Journal on Computing},
   year={2025}
 }
 ```
